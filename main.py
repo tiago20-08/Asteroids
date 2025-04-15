@@ -38,10 +38,14 @@ def main():
             thing.draw(screen)
             
         for ast in asteroids:
+            for shot in shots:
+                if ast.coll(shot):
+                    ast.split()
+                    shot.kill()
             if gamer.coll(ast):
                 print("Game over")
                 return
-                
+            
         
         dt = time.tick(60) / 1000
         
